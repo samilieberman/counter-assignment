@@ -12,8 +12,8 @@ export default function Counter() {
     <div>
       <h2>Counter</h2>
       <p data-testid="count">{count}</p>
-      <button onClick={increment}> + </button>
-      <button onClick={decrement}> - </button>
+      <button onClick={increment}> Add </button>
+      <button onClick={decrement}> Subtract </button>
     </div>
   );
 }
