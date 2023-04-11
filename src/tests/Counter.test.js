@@ -1,22 +1,32 @@
-// import necessary react testing library helpers here
-// import the Counter component here
+//Code encourage by Youtube PedroTech
+import { render, fireEvent } from "@testing-library/react";
+import Counter from "../components/Counter";
 
-beforeEach(() => {
-  // Render the Counter component here
-})
+describe(Counter, () => {
+  it("should render initial count with value of 0", () => {
+    const { getByTestId } = render(<Counter initialCount={0} />);
+    const countValue = Number(getByTestId("count").textContent);
+    expect(countValue).toEqual(0);
+  });
 
-test('renders counter message', () => {
-  // Complete the unit test below based on the objective in the line above
-});
+  it("clicking + increments the count", () => {
+    const { getByTestId, getByRole } = render(<Counter initialCount={0} />);
+    const increment = getByRole("button", { name: "+" });
+    const countValue = Number(getByTestId("count").textContent);
+    expect(countValue).toEqual(0);
+    fireEvent.click(increment);
+    const Value = Number(getByTestId("count").textContent);
+    expect(Value).toEqual(1);
+  });
 
-test('should render initial count with value of 0', () => {
-  // Complete the unit test below based on the objective in the line above
-});
+  it("clicking - decrements the count", () => {
+    const { getByTestId, getByRole } = render(<Counter initialCount={0} />);
+    const decrement = getByRole("button", { name: "-" });
+    expect(Number(getByTestId("count").textContent)).toEqual(0);
 
-test('clicking + increments the count', () => {
-  // Complete the unit test below based on the objective in the line above
-});
+    fireEvent.click(decrement);
 
-test('clicking - decrements the count', () => {
-  // Complete the unit test below based on the objective in the line above
+    expect(Number(getByTestId("count").textContent)).toEqual(-1);
+  });
+
 });
