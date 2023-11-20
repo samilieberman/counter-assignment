@@ -20,7 +20,6 @@ test('clicking + increments the count', () => {
   const counter = screen.getByTestId("count");
 
   fireEvent.click(button);
-
   expect(counter).toHaveTextContent("1");
 });
 
@@ -29,6 +28,5 @@ test('clicking - decrements the count', () => {
   const counter = screen.getByTestId("count");
 
   fireEvent.click(button);
-
   expect(counter).toHaveTextContent("-1");
 });
